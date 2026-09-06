@@ -1,7 +1,22 @@
+# OS
 .DS_Store
 Thumbs.db
 *.swp
+
+# Environments and build
 .venv/
 __pycache__/
 node_modules/
+
+# Secrets: never commit any of these
 .env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+secrets.*
+credentials.*
+*service-account*.json
+.banana/
+.banana-publication-capability-v1

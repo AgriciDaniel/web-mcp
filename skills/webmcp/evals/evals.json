@@ -1,5 +1,5 @@
 {
-  "skill_name": "webmcp-readiness",
+  "skill_name": "webmcp",
   "evals": [
     {
       "id": 1,
@@ -12,7 +12,9 @@
         "Proposes a bounded tool set, not whole-site instrumentation.",
         "No invented adoption figure, conversion estimate, ranking effect or provider action."
       ],
-      "files": ["inputs.md"]
+      "files": [
+        "inputs.md"
+      ]
     },
     {
       "id": 2,
@@ -24,7 +26,9 @@
         "Does not treat a competitor's action as evidence of fit.",
         "Preserves the requester's stated goal while declining the requested conclusion."
       ],
-      "files": ["inputs.md"]
+      "files": [
+        "inputs.md"
+      ]
     },
     {
       "id": 3,
@@ -37,7 +41,9 @@
         "States no conversion data exists rather than hedging it.",
         "Cuts or attributes unsupported claims rather than vaguely softening them."
       ],
-      "files": ["inputs.md"]
+      "files": [
+        "inputs.md"
+      ]
     },
     {
       "id": 4,
@@ -51,7 +57,9 @@
         "Addresses the untrusted-content surface on the reviews tool.",
         "Does not claim the code was executed or tested."
       ],
-      "files": ["inputs.md"]
+      "files": [
+        "inputs.md"
+      ]
     },
     {
       "id": 5,
@@ -63,7 +71,9 @@
         "Returns needs_input rather than a speculative assessment.",
         "Does not substitute absence with a generic WebMCP explainer presented as an assessment."
       ],
-      "files": ["inputs.md"]
+      "files": [
+        "inputs.md"
+      ]
     }
   ]
 }

@@ -1,4 +1,4 @@
-![WebMCP readiness cover: a browser window handing three labelled action cards, a calendar, a search glyph and a price tag, to a faceless assistant figure reaching to receive them](assets/cover.jpg)
+![web-mcp: WebMCP readiness for any agent. A browser window handing three labelled action cards, a calendar, a search glyph and a price tag, to a faceless figure reaching to receive them](assets/cover.jpg)
 
 # web-mcp
 
