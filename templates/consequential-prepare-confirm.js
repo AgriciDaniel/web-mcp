@@ -70,18 +70,18 @@ if ('modelContext' in document) {
           return { error: 'upstream_error', status: res.status };
         }
 
-        const { summary, confirmationToken, expiresAt, totalPrice } = await res.json();
+        const { summary, confirmationRef, expiresAt, totalPrice } = await res.json();
 
         // The summary is what the human reads before confirming.
         return {
           ok: true,
           summary,
           totalPrice,
-          confirmationToken,
+          confirmationRef,
           expiresAt,
           nextStep:
             'Show this summary to the customer. Call confirm_booking with the ' +
-            'confirmationToken only after they agree.',
+            'confirmationRef only after they agree.',
         };
       },
     });
@@ -91,33 +91,33 @@ if ('modelContext' in document) {
       name: 'confirm_booking',
       description:
         'Complete a booking that was previously prepared. Requires the ' +
-        'confirmationToken returned by prepare_booking. This charges the customer.',
+        'confirmationRef returned by prepare_booking. This charges the customer.',
       inputSchema: {
         type: 'object',
         properties: {
-          confirmationToken: {
+          confirmationRef: {
             type: 'string',
             description: 'The token returned by prepare_booking.',
           },
         },
-        required: ['confirmationToken'],
+        required: ['confirmationRef'],
       },
       annotations: {
         readOnlyHint: false,      // it mutates
         untrustedContentHint: false,
         consequentialHint: true,  // REQUIRED: real-world, non-reversible, charges money
       },
-      async execute({ confirmationToken }, { signal }) {
-        if (typeof confirmationToken !== 'string' || !confirmationToken) {
+      async execute({ confirmationRef }, { signal }) {
+        if (typeof confirmationRef !== 'string' || !confirmationRef) {
           return {
             error: 'invalid_parameters',
-            field: 'confirmationToken',
-            message: 'Call prepare_booking first and pass its confirmationToken.',
+            field: 'confirmationRef',
+            message: 'Call prepare_booking first and pass its confirmationRef.',
           };
         }
 
         // The page owns the human gate. Do not delegate this to the agent.
-        const approved = await showConfirmationDialog(confirmationToken);
+        const approved = await showConfirmationDialog(confirmationRef);
         if (!approved) {
           // Business-logic violation, stated in the user's terms.
           return {
@@ -129,7 +129,7 @@ if ('modelContext' in document) {
         const res = await fetch('/api/bookings/confirm', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ confirmationToken }),
+          body: JSON.stringify({ confirmationRef }),
           signal,
         });
 

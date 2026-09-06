@@ -99,6 +99,7 @@ what silently disables tool registration
 | `references/ecosystem.md` | Which package is official, licence boundaries, naming traps |
 | `templates/` | Seven annotated, copy-paste tools including prepare-then-confirm |
 | `scripts/check-templates.sh` | Deterministic check: no deprecated accessor, all annotations set, signal threaded, names in budget |
+| `scripts/check-tools.mjs` | Executes the templates against a stub document and validates the real tool objects, schemas and budgets |
 | `evals/` | Five synthetic cases including a poor-fit refusal |
 | `docs/sources.md` | Every source, its fetch date, and its authority tier |
 
@@ -123,7 +124,7 @@ Where the evidence runs out, it says `no data`. That happens more than you would
 - **WebKit has formally opposed it.** Mozilla is formally neutral. Neither has endorsed it.
 - **Only ChatGPT Work and Codex can call tools today**, in the ChatGPT desktop browser, gated to specific models, unavailable on Enterprise and Edu. Gemini in Chrome is not live.
 - **That client sees only imperative, top-level tools.** Declarative form tools are invisible to it.
-- The templates are checked mechanically, but no template has been run against a live agent in production.
+- The templates execute and produce valid tool objects, verified on every change. But no template has been run against a live agent in production, and the eval cases are defined rather than run.
 - Adoption is small. Real deployments exist, including a live Stripe checkout, but no major brand deployment has been verified.
 - The eval cases are **defined, not run.** No independent behavioural evaluation has been performed.
 

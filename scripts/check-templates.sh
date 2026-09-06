@@ -101,6 +101,15 @@ else
   fail "api-reference does not document document.modelContext"
 fi
 
+# 8. Execute the templates and validate the real tool objects.
+echo
+echo "8. runtime tool validation"
+if command -v node >/dev/null 2>&1; then
+  if node scripts/check-tools.mjs; then :; else fail "runtime tool validation failed"; fi
+else
+  note "skip" "node not available, runtime validation skipped"
+fi
+
 echo
 if [ "$FAIL" -eq 0 ]; then echo "PASS"; else echo "FAILED"; fi
 exit "$FAIL"

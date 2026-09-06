@@ -112,8 +112,8 @@ token. The second executes only when handed that token. The person sees the summ
 between the two calls.
 
 ```
-prepare_booking(...)  ->  { summary, confirmation_token, expires_at }
-confirm_booking({ confirmation_token })  ->  { booking_id }
+prepare_booking(...)  ->  { summary, confirmation_ref, expires_at }
+confirm_booking({ confirmation_ref })  ->  { booking_id }
 ```
 
 `prepare_*` is `readOnlyHint: true`. `confirm_*` is `consequentialHint: true`.
