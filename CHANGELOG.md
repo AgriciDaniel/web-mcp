@@ -2,11 +2,15 @@
 
 ## 1.0.0 - 2026-09-06
 
-First release.
+First release. Renamed from `claude-webmcp` to `web-mcp` before publication: the
+content is runtime-agnostic Markdown and was never Claude Code specific.
 
 ### Added
 
-- `webmcp` skill with five routes: assess, design, review, claims, api.
+- `AGENTS.md` universal entry point for Codex, Cursor, Copilot, Gemini CLI,
+  opencode, Windsurf, Aider, or a plain chat window.
+- `skills/webmcp/SKILL.md` Claude Code wrapper over the same content.
+- Five routes: assess, design, review, claims, api.
 - Fit assessment with four tests. Most sites are expected to fail it, and a
   documented no is a successful run.
 - Three-rung claim ladder separating Chrome's documented statements, one vendor

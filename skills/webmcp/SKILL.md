@@ -9,12 +9,15 @@ metadata:
   reverify_by: "2026-12-01"
 ---
 
-# Claude WebMCP
+# WebMCP Readiness
 
 WebMCP lets a page hand AI agents a list of callable actions instead of making them
-guess their way through your buttons from a screenshot. This skill decides whether
-you should build any, shapes them if you should, and stops you publishing claims the
+guess their way through your buttons from a screenshot. This decides whether you
+should build any, shapes them if you should, and stops you publishing claims the
 evidence does not support.
+
+This file is the Claude Code wrapper. The same content is at `AGENTS.md` in the
+repository root for every other agent runtime.
 
 Most sites should not build WebMCP tools yet. Returning that answer with the reasons
 is a successful run.

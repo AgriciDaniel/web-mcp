@@ -1,6 +1,6 @@
 # Sources
 
-Every claim in this skill traces to a source below. Live web pages change without
+Every claim in this repository traces to a source below. Live web pages change without
 notice, so each entry records the fetch date and the page's own stated last-updated
 date where one exists. This is weaker provenance than a pinned file hash, and it is
 recorded as such rather than dressed up.
@@ -76,7 +76,7 @@ timeline and is treated as undated opinion.
 ## Rights
 
 No source code, binary, extension, package, or repository content was copied into
-this skill. Quoted sentences are short, attributed, and used to fix the meaning of a
+this repository. Quoted sentences are short, attributed, and used to fix the meaning of a
 normative claim.
 
 The specification is under the W3C Software and Document Licence. Chrome

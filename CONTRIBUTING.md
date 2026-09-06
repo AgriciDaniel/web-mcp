@@ -2,12 +2,12 @@
 
 ## The rule that matters here
 
-This skill exists because most WebMCP writing is wrong. So every factual claim needs
+This repository exists because most WebMCP writing is wrong. So every factual claim needs
 a source, a fetch date, and an authority tier. A pull request that adds a claim
 without one will be asked for it.
 
 If the evidence does not exist, say `no data`. That is a valid and useful answer, and
-it appears throughout the skill already.
+it appears throughout the references already.
 
 ## What is most useful
 

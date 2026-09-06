@@ -7,12 +7,12 @@ through https://github.com/AgriciDaniel.
 
 ## Scope
 
-This skill contains no executable code. It is instructions and reference material for
-Claude Code. The realistic risk is a factual error leading someone to ship an unsafe
+This repository contains no executable code. It is instructions and reference
+material that any agent runtime can read. The realistic risk is a factual error leading someone to ship an unsafe
 tool, so a wrong security claim in this repository is a security issue and should be
 reported as one.
 
-## Security topics the skill covers
+## Security topics covered
 
 - The annotation contract, and which defaults are permissive. Two of the three are.
 - Tool output as a prompt-injection surface.

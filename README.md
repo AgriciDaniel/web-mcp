@@ -1,15 +1,17 @@
-![Claude WebMCP cover: a browser window handing three labelled action cards, a calendar, a search glyph and a price tag, to a faceless assistant figure reaching to receive them](assets/cover.jpg)
+![WebMCP readiness cover: a browser window handing three labelled action cards, a calendar, a search glyph and a price tag, to a faceless assistant figure reaching to receive them](assets/cover.jpg)
 
-# Claude WebMCP: Agent-Readiness Skill for Claude Code
+# web-mcp
 
-**Claude WebMCP is a Claude Code skill for deciding whether your site should expose WebMCP tools to AI agents, designing those tools safely, and refusing the claims about them that no evidence supports.**
+**Decide whether your site should expose WebMCP tools to AI agents, design those tools safely, and refuse the claims about them that no evidence supports.**
 
-[![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-Skill-blue)](https://claude.ai/claude-code)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Sources verified](https://img.shields.io/badge/sources%20verified-2026--09--06-brightgreen)](docs/sources.md)
 [![Re-verify by](https://img.shields.io/badge/re--verify%20by-2026--12--01-orange)](docs/sources.md)
+[![Runtime](https://img.shields.io/badge/runtime-agnostic-blue)](#use-it-with-any-agent)
 
-Most sites should not build WebMCP tools yet. This skill tells you that, with reasons, and that is a successful run.
+Works with any coding agent. It is Markdown, not a framework.
+
+Most sites should not build WebMCP tools yet. This tells you that, with reasons, and that is a successful run.
 
 ## What WebMCP is, in plain terms
 
@@ -19,9 +21,9 @@ The agent calls the action on your live page, using your visitor's own logged-in
 
 That is genuinely useful. It is also pre-standard, off by default in every browser, and has almost no real-world adoption yet. Both halves are true, and most writing about it only tells you one.
 
-## What this skill does
+## What this does
 
-- **Decides whether you should build.** Four fit tests. Real actions, action value, a reachable agent, and capacity to maintain an experimental API. Most sites fail at least two.
+- **Decides whether you should build.** Four fit tests: real actions, action value, a reachable agent, and capacity to maintain an experimental API. Most sites fail at least two.
 - **Shapes the tools if you should.** Three or four tools on one high-value flow, not your whole site.
 - **Reviews them for safety.** The annotation contract, the two gates that silently disable everything, and tool output as a prompt-injection surface.
 - **Stops you overclaiming.** A three-rung claim ladder separating what Chrome documents, what one vendor benchmark measured, and what nobody has evidence for.
@@ -40,7 +42,7 @@ Almost every WebMCP article currently in circulation makes at least one of these
 | It uses 89% fewer tokens | A circulating figure with no published methodology |
 | Biggest shift in technical SEO since structured data | A practitioner's conditional speculation, quoted with the condition removed |
 
-The skill carries the sourced version of each, so you can say something accurate instead.
+This repo carries the sourced version of each, so you can say something accurate instead.
 
 ## What is actually true
 
@@ -50,40 +52,39 @@ The skill carries the sourced version of each, so you can say something accurate
 
 **Nobody has measured conversion.** If someone tells you otherwise, ask for the study.
 
-## Who this is for
+## Use it with any agent
 
-- **Marketers and founders** being asked whether to "make the site AI-ready" and wanting a real answer.
-- **Developers** who need the correct API surface, the two gates that fail silently, and the security guidance in one place.
-- **Anyone about to publish** something about WebMCP who would rather not be wrong in front of their audience.
-
-## Installation
+The content is plain Markdown with no runtime dependency. Pick whichever entry point your tool reads.
 
 ```bash
-git clone https://github.com/AgriciDaniel/claude-webmcp.git
-cp -r claude-webmcp/skills/webmcp ~/.claude/skills/
+git clone https://github.com/AgriciDaniel/web-mcp.git
 ```
 
-Then in Claude Code:
+| Your tool | What to do |
+|---|---|
+| **Codex, Cursor, Copilot, Gemini CLI, opencode, Windsurf, Aider** | Point it at [`AGENTS.md`](AGENTS.md), or copy it to your project root |
+| **Claude Code** | `cp -r web-mcp/skills/webmcp ~/.claude/skills/` then `/webmcp` |
+| **ChatGPT, Claude.ai, any chat UI** | Paste [`AGENTS.md`](AGENTS.md) plus the one reference you need |
+| **Anything else** | Read [`references/`](skills/webmcp/references/) directly. It is documentation that happens to be agent-readable |
+
+No install, no package, no build step. Deleting the folder uninstalls it.
+
+## Ask it things like
 
 ```
-/webmcp should we build webmcp tools for our booking flow
-```
-
-## Use it for
-
-```
-/webmcp assess    our ecommerce site, we have a configurator and a quote form
-/webmcp design    three tools for the checkout flow
-/webmcp review    <paste a registerTool call>
-/webmcp claims    <paste a draft post or client deck>
-/webmcp api       what disables tool registration silently
+should we build webmcp tools for our booking flow
+design three tools for our checkout
+review this registerTool call         <paste code>
+is this claim safe to publish         <paste a draft post>
+what silently disables tool registration
 ```
 
 ## What is in the box
 
 | Path | What it holds |
 |---|---|
-| `skills/webmcp/SKILL.md` | The entry point and routing |
+| `AGENTS.md` | Universal entry point. Any agent, any runtime |
+| `skills/webmcp/SKILL.md` | Claude Code skill wrapper around the same content |
 | `references/method.md` | Fit tests, tool scoping, claim adjudication, measurement plan |
 | `references/claims-and-maturity.md` | The claim ladder. Read this before publishing anything |
 | `references/api-reference.md` | Verified WebIDL, both gates, annotation contract, character budgets, Chrome's design rules |
@@ -91,13 +92,19 @@ Then in Claude Code:
 | `evals/` | Five synthetic cases including a poor-fit refusal |
 | `docs/sources.md` | Every source, its fetch date, and its authority tier |
 
+## Who this is for
+
+- **Marketers and founders** being asked whether to "make the site AI-ready" and wanting a real answer.
+- **Developers** who need the correct API surface, the two gates that fail silently, and the security guidance in one place.
+- **Anyone about to publish** something about WebMCP who would rather not be wrong in front of their audience.
+
 ## How the facts were checked
 
-Five parallel research agents verified every claim against primary sources on 2026-09-05. A three-lane adversarial audit re-checked the result on 2026-09-06 and found six errors, including one inverted fact and two of our own inferences presented as vendor guidance. All six were corrected. The corrections are documented rather than quietly overwritten.
+Five parallel research agents verified every claim against primary sources on 2026-09-05. A three-lane adversarial audit re-checked the result on 2026-09-06 and found six errors, including one inverted fact and two of our own inferences presented as vendor guidance. All six were corrected. The corrections are documented in [CHANGELOG.md](CHANGELOG.md) rather than quietly overwritten.
 
 Sources are graded in three tiers: normative and first-party, first-party with a commercial interest, and independent practitioner evidence. See [docs/sources.md](docs/sources.md).
 
-Where the evidence runs out, the skill says `no data`. That happens more than you would expect for a technology this widely written about.
+Where the evidence runs out, it says `no data`. That happens more than you would expect for a technology this widely written about.
 
 ## Honest limitations
 
@@ -107,7 +114,15 @@ Where the evidence runs out, the skill says `no data`. That happens more than yo
 - **Only ChatGPT Work and Codex can call tools today**, in the ChatGPT desktop browser, gated to specific models, unavailable on Enterprise and Edu. Gemini in Chrome is not live.
 - **That client sees only imperative, top-level tools.** Declarative form tools are invisible to it.
 - Adoption is small. Real deployments exist, including a live Stripe checkout, but no major brand deployment has been verified.
-- This skill has **not** been through an independent behavioural evaluation. The eval cases are defined, not run.
+- The eval cases are **defined, not run.** No independent behavioural evaluation has been performed.
+
+## Not affiliated with the WebMCP specification
+
+This is an independent readiness and review guide. It is not the standard, not published by the W3C Web Machine Learning Community Group, and not affiliated with Google or Chrome.
+
+The specification lives at [webmachinelearning/webmcp](https://github.com/webmachinelearning/webmcp). Chrome's documentation is at [developer.chrome.com/docs/ai/webmcp](https://developer.chrome.com/docs/ai/webmcp). Use those as the source of truth; use this to decide what to do about them.
+
+Also: `webmcp.dev` is **not** the standard. It serves a superseded 2025 library, and its disclaimer only exists on GitHub, not on the site. Do not link it.
 
 ## Re-verify by 2026-12-01
 
@@ -119,4 +134,4 @@ Treat an expired horizon as a blocker, not a warning.
 
 MIT. See [LICENSE](LICENSE).
 
-Built by [Daniel Agrici](https://github.com/AgriciDaniel). Open-source Claude Code skills for marketing systems.
+Built by [Daniel Agrici](https://github.com/AgriciDaniel).
