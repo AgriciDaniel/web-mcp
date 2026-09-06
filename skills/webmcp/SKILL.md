@@ -1,9 +1,9 @@
 ---
 name: webmcp
 description: "Decide whether a site should expose WebMCP tools to AI agents, design those tools safely, and separate verified agent-interface capability from the SEO and conversion claims no current evidence supports. Use for a WebMCP readiness review, a tool design or security check, or to adjudicate a public claim before you publish it."
-argument-hint: "[assess|design|review|claims|api] <site, flow, tool, or claim>"
+argument-hint: "[assess|design|implement|scaffold|verify|trial|review|claims|api] <site, flow, tool, or claim>"
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: AgriciDaniel
   verified: "2026-09-06"
   reverify_by: "2026-12-01"
@@ -24,14 +24,25 @@ is a successful run.
 
 ## Routes
 
+The flow is `assess` then `design` then `implement` then `scaffold` then `verify`
+then `trial`. `review` and `claims` are usable at any point.
+
 | You want | Route |
 |---|---|
 | Should we build WebMCP tools at all | `assess`, read [method](references/method.md) |
 | Scope and shape the tools | `design`, read [method](references/method.md) then [api-reference](references/api-reference.md) |
+| Write the actual tool code | `implement`, read [implement](references/implement.md) |
+| Wire it into React, Vue, Angular, Next or vanilla | `scaffold`, read [scaffold](references/scaffold.md) |
+| Prove it works before shipping | `verify`, read [verify](references/verify.md) |
+| Local flag and origin trial token | `trial`, read [trial](references/trial.md) |
 | Security and correctness review of a proposed tool | `review`, read [api-reference](references/api-reference.md) |
 | Is this claim safe to publish | `claims`, read [claims-and-maturity](references/claims-and-maturity.md) |
 | Exact API surface, gates, budgets | `api`, read [api-reference](references/api-reference.md) |
 | Which package, which repo, what licence | read [ecosystem](references/ecosystem.md) |
+
+Working templates are in [`templates/`](../../templates/). Every one is checked by
+`scripts/check-templates.sh` for the deprecated accessor, the annotation contract,
+signal threading and name budgets.
 
 ## Method
 
@@ -49,15 +60,23 @@ is a successful run.
    wording, and name each failing claim with the reason.
 6. Write the measurement plan and its limits. No external telemetry exists.
 
-## What this skill will not do
+## What this will and will not do
+
+It WILL write tool code into your repository, scaffold it into your framework,
+and tell you how to verify it.
+
+It will NOT:
 
 - Claim WebMCP affects rankings, indexing, crawling, traffic, or conversion. No
   current evidence supports any of them.
-- Register a tool, enrol an origin trial, set a browser flag, install an extension,
-  run a CLI, or modify a site. It reviews and drafts.
+- Deploy. It does not enrol you in an origin trial, set browser flags, install
+  extensions, run a CLI against production, or modify a live site. Those are the
+  owner's actions.
 - Present a vendor benchmark as independent validation.
 - Invent a statistic, a deployment, a capability, or a currentness claim. Missing
   evidence returns `no data`. Missing decisions return `needs_input`.
+- Build before `assess` passes. Most sites should not have tools yet, and
+  returning that answer with reasons is a successful run.
 
 ## The one fact that governs every marketing claim
 
@@ -82,7 +101,7 @@ Treat an expired horizon as a blocker, not a warning. Sources and dates are in
 
 ## Evaluation
 
-Five synthetic cases in [evals](evals/evals.json): a good fit, a poor fit pushed
+Synthetic cases in [evals](evals/evals.json): a good fit, a poor fit pushed
 enthusiastically, a claim adjudication, a security review, and a missing-evidence
 refusal. Case definitions are not a passing run. Nothing here has been through an
 independent behavioural evaluation.

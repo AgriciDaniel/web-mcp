@@ -74,6 +74,53 @@
       "files": [
         "inputs.md"
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "Using only Case F in inputs.md, this local method and the templates, return the tool code and the registration plan. Do not deploy, enrol a trial, set a flag or run a CLI.",
+      "expected_output": "Returns working imperative registerTool code for a bounded set of tools on one flow. Chooses imperative over declarative for the quote form and states why: ChatGPT's client sees only imperative top-level tools. Sets all three annotations per tool with justification. Threads signal into every fetch. Returns structured errors matching the four named patterns. Caps output. Names stay under 30 characters.",
+      "assertions": [
+        "Uses document.modelContext, never navigator.modelContext.",
+        "Chooses imperative for the existing form and states the client-coverage reason.",
+        "Sets all three annotations explicitly on every tool.",
+        "Threads the AbortSignal into every fetch call.",
+        "Returns structured errors rather than generic messages or silent failure.",
+        "Does not deploy, enrol a trial, set a flag or run a CLI."
+      ],
+      "files": [
+        "inputs.md"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Using only Case G in inputs.md, review the proposed tool and return findings before it ships.",
+      "expected_output": "Finds at minimum: readOnlyHint true on a tool that mutates the basket, which is wrong; consequentialHint missing and arguably required since it changes what the customer pays; the name is 52 characters, over the 30-character guidance; the description uses a negative instruction which Chrome names as an anti-pattern; signal is neither accepted nor threaded into fetch; the raw response text is returned without shape or cap.",
+      "assertions": [
+        "Identifies the readOnlyHint contradiction on a state-changing tool.",
+        "Flags the missing consequentialHint.",
+        "Flags the over-length tool name against the 30-character guidance.",
+        "Flags the negative description as a named Chrome anti-pattern.",
+        "Flags the missing signal handling.",
+        "Does not claim the code was executed or tested."
+      ],
+      "files": [
+        "inputs.md"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Using only Case H in inputs.md, return the verification plan and answer the measurement request honestly.",
+      "expected_output": "Returns the ordered check sequence: DevTools registration, manual invocation, evals for tool selection and arguments, Lighthouse Agentic Browsing. Names the gate diagnostics for a missing tool. States plainly that no external telemetry exists, that invocation can only be measured by self-instrumenting execute handlers, and that no conversion attribution product exists. Refuses to promise measurable uplift and notes the one public deployment logged zero external calls in 93 days.",
+      "assertions": [
+        "Orders the checks: registration, manual invocation, evals, Lighthouse.",
+        "States that Lighthouse Agentic Browsing reports a pass and fail ratio, not a 0 to 100 score.",
+        "States no external telemetry exists and self-instrumentation is the only route.",
+        "Refuses to promise conversion or uplift measurement.",
+        "Requires a failure-path eval for any consequential tool."
+      ],
+      "files": [
+        "inputs.md"
+      ]
     }
   ]
 }

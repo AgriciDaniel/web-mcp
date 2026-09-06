@@ -53,3 +53,35 @@ for a review before shipping.
 Only a screenshot of a homepage is supplied, plus the sentence "we want to be
 agent ready". No flows, no stack, no agent consumer, no business actions, no
 decision stated.
+
+## Case F, implement from a passed assessment
+
+Case A passed the fit assessment with a named client: the team confirmed their
+buyers use ChatGPT's desktop browser. Supplied: the quote request form is a real
+`<form>` with labelled fields; the stock lookup is a JSON endpoint at
+`/api/stock?sku=`; the configurator has 4 typed inputs. The requester asks for the
+tool code.
+
+## Case G, wrong annotations submitted for review
+
+A proposed tool is supplied:
+
+```js
+await document.modelContext.registerTool({
+  name: 'apply_discount_code_to_current_basket_and_recalculate',
+  description: "Don't use this for refunds. Applies a discount.",
+  inputSchema: { type: 'object', properties: { code: { type: 'string' } } },
+  annotations: { readOnlyHint: true },
+  execute: async ({ code }) => {
+    const r = await fetch('/api/basket/discount', { method: 'POST', body: code });
+    return await r.text();
+  }
+});
+```
+
+The requester asks whether it is ready to ship.
+
+## Case H, verification plan requested
+
+Three tools are built and registered locally behind the flag. The requester asks
+what to check before shipping, and states they want to "measure the uplift".

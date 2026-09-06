@@ -1,5 +1,48 @@
 # Changelog
 
+## 1.1.0 - 2026-09-06
+
+Turned the gate into a gate plus a build path. 1.0.0 answered "should you" and
+stopped there, which left anyone who passed the fit assessment with nowhere to go.
+
+### Added
+
+- Four routes: `implement`, `scaffold`, `verify`, `trial`.
+- `references/implement.md`: authoring rules, character budgets as hard limits,
+  the four error patterns, deterministic naming, and the prepare-then-confirm
+  pattern for irreversible actions.
+- `references/scaffold.md`: gate pre-flight commands and per-framework wiring for
+  vanilla, React, Vue, Angular, Next and declarative, with the package identity
+  traps called out.
+- `references/verify.md`: DevTools WebMCP panel, `webmcp-evals` with the
+  `expectedCall` shape, Lighthouse Agentic Browsing, Chrome's five failure modes,
+  the silent-failure trap, and a diagnostic table for a tool that will not appear.
+- `references/trial.md`: local flag, origin trial token as header or meta tag, the
+  2026-11-17 end date, and which clients can actually call your tools.
+- `templates/`: seven annotated files. Vanilla, React with the official
+  `use-webmcp-tool`, Vue, Angular, declarative form, prepare-then-confirm for
+  consequential actions, and untrusted-content handling.
+- `scripts/check-templates.sh`: deterministic check for the deprecated accessor in
+  executable code, all three annotations set, `signal` threaded into every fetch,
+  tool names within budget, and correct declarative attribute casing.
+- Three eval cases for the build path, including a wrong-annotation review and an
+  honest answer to a request to "measure the uplift".
+
+### Changed
+
+- Boundaries now refuse to DEPLOY rather than refuse to BUILD. It writes code into
+  your repository; enrolling trials, setting flags, running CLIs against
+  production and modifying live sites remain the owner's actions.
+- Imperative registration is the documented default, with the reason stated:
+  ChatGPT's Site tools is the only shipping client and it cannot see declarative
+  or iframe tools.
+
+### Note
+
+The templates are checked mechanically on every change. No template has been run
+against a live agent in production, and that is stated in the README rather than
+implied away.
+
 ## 1.0.0 - 2026-09-06
 
 First release. Renamed from `claude-webmcp` to `web-mcp` before publication: the

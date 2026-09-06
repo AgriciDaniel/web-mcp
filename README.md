@@ -13,6 +13,8 @@ Works with any coding agent. It is Markdown, not a framework.
 
 Most sites should not build WebMCP tools yet. This tells you that, with reasons, and that is a successful run.
 
+If you do pass, it writes the tools with you: working code, framework wiring, and a verification loop.
+
 ## What WebMCP is, in plain terms
 
 WebMCP is a new browser capability that lets your website hand an AI agent a list of actions it can call directly, like `book_appointment` or `search_products`, instead of the agent squinting at a screenshot and clicking around like a person.
@@ -27,6 +29,8 @@ That is genuinely useful. It is also pre-standard, off by default in every brows
 - **Shapes the tools if you should.** Three or four tools on one high-value flow, not your whole site.
 - **Reviews them for safety.** The annotation contract, the two gates that silently disable everything, and tool output as a prompt-injection surface.
 - **Stops you overclaiming.** A three-rung claim ladder separating what Chrome documents, what one vendor benchmark measured, and what nobody has evidence for.
+- **Writes the tools if you pass.** Working `registerTool` code, seven annotated templates, framework wiring for vanilla, React, Vue, Angular and Next.
+- **Verifies them before you ship.** DevTools, evals, Lighthouse Agentic Browsing, and the two gate checks.
 - **Tells you what you can measure.** Which is less than you would hope.
 
 ## Why it exists
@@ -88,7 +92,13 @@ what silently disables tool registration
 | `references/method.md` | Fit tests, tool scoping, claim adjudication, measurement plan |
 | `references/claims-and-maturity.md` | The claim ladder. Read this before publishing anything |
 | `references/api-reference.md` | Verified WebIDL, both gates, annotation contract, character budgets, Chrome's design rules |
+| `references/implement.md` | Authoring rules, budgets, error patterns, prepare-then-confirm |
+| `references/scaffold.md` | Gate pre-flight and per-framework wiring |
+| `references/verify.md` | DevTools, evals, Lighthouse, and what you cannot measure |
+| `references/trial.md` | Local flag, origin trial token, who can call your tools |
 | `references/ecosystem.md` | Which package is official, licence boundaries, naming traps |
+| `templates/` | Seven annotated, copy-paste tools including prepare-then-confirm |
+| `scripts/check-templates.sh` | Deterministic check: no deprecated accessor, all annotations set, signal threaded, names in budget |
 | `evals/` | Five synthetic cases including a poor-fit refusal |
 | `docs/sources.md` | Every source, its fetch date, and its authority tier |
 
@@ -113,6 +123,7 @@ Where the evidence runs out, it says `no data`. That happens more than you would
 - **WebKit has formally opposed it.** Mozilla is formally neutral. Neither has endorsed it.
 - **Only ChatGPT Work and Codex can call tools today**, in the ChatGPT desktop browser, gated to specific models, unavailable on Enterprise and Edu. Gemini in Chrome is not live.
 - **That client sees only imperative, top-level tools.** Declarative form tools are invisible to it.
+- The templates are checked mechanically, but no template has been run against a live agent in production.
 - Adoption is small. Real deployments exist, including a live Stripe checkout, but no major brand deployment has been verified.
 - The eval cases are **defined, not run.** No independent behavioural evaluation has been performed.
 

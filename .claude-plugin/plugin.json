@@ -1,7 +1,7 @@
 {
   "name": "web-mcp",
-  "version": "1.0.0",
-  "description": "Runtime-agnostic WebMCP readiness guide. Decides whether a site should expose WebMCP tools to AI agents, designs and security-reviews those tools, and adjudicates public claims against primary sources. Ships AGENTS.md for any agent runtime plus a Claude Code skill wrapper. Most sites should not build WebMCP tools yet; returning that answer with reasons is a successful run.",
+  "version": "1.1.0",
+  "description": "Runtime-agnostic WebMCP guide and build kit. Decides whether a site should expose WebMCP tools to AI agents, then writes them: authoring rules, seven annotated templates, framework wiring, a verification loop and origin-trial setup. Ships AGENTS.md for any agent runtime plus a Claude Code skill wrapper. Most sites should not build WebMCP tools yet; returning that answer with reasons is a successful run.",
   "author": {
     "name": "AgriciDaniel",
     "url": "https://github.com/AgriciDaniel"
@@ -24,6 +24,10 @@
     "prompt-injection",
     "tool-security",
     "geo",
-    "ai-search"
+    "ai-search",
+    "templates",
+    "code-generation",
+    "tool-design",
+    "implementation"
   ]
 }

@@ -1,0 +1,100 @@
+<!--
+  WebMCP: declarative tool from an existing form.
+
+  READ THIS FIRST.
+
+  ChatGPT's Site tools, the only shipping client that can call tools today,
+  discovers ONLY imperative tools on the top-level page. It does NOT see
+  declarative form tools. It does NOT see iframe-registered tools.
+
+  So a declarative tool is currently invisible to the only available consumer.
+  Use it when the assessment named a client that reads declarative tools, or as
+  a deliberate bet on future coverage. Otherwise use the imperative API.
+
+  Note also that Chrome's declarative-api documentation page is materially
+  staler than the imperative page, so verify details before relying on them.
+
+  Attributes are lowercase and unhyphenated. Not data- prefixed.
+  Removing either toolname or tooldescription UNREGISTERS the tool.
+-->
+
+<form
+  toolname="submit_support_request"
+  tooldescription="Submit a customer support request and route it to the correct team."
+  action="/support/submit"
+  method="post"
+>
+  <label for="firstName">First name</label>
+  <input id="firstName" type="text" name="firstName" required />
+
+  <label for="email">Email address</label>
+  <input id="email" type="email" name="email" required />
+
+  <!--
+    Parameter description falls back in this order:
+      toolparamdescription  ->  the associated <label>  ->  aria-description
+    Only add toolparamdescription where the label is genuinely ambiguous.
+  -->
+  <label for="team">Team</label>
+  <select
+    id="team"
+    name="team"
+    required
+    toolparamdescription="Determines which team receives this request."
+  >
+    <option value="billing">A question about my bill</option>
+    <option value="delivery">Where is my order</option>
+    <option value="technical">Something is broken</option>
+  </select>
+
+  <label for="details">Details</label>
+  <textarea id="details" name="details"></textarea>
+
+  <button type="submit">Submit</button>
+</form>
+
+<!--
+  toolautosubmit on the <form> makes the agent trigger submission AND a
+  navigation when it invokes the tool. Omitted here on purpose: by default the
+  agent fills the form and the person presses Submit, which is the safer shape.
+-->
+
+<style>
+  /* Show the person what the agent is touching. WebMCP is documented as a
+     human-in-the-loop design, and a person who cannot see agent activity
+     cannot supervise it. */
+  form:tool-form-active {
+    outline: 2px solid #3d4f63;
+    outline-offset: 4px;
+  }
+  button:tool-submit-active {
+    box-shadow: 0 0 0 3px rgba(61, 79, 99, 0.35);
+  }
+</style>
+
+<script>
+  // Respond to the agent without a full page navigation.
+  document.querySelector('form[toolname]')?.addEventListener('submit', (event) => {
+    // agentInvoked is a boolean property on the SubmitEvent.
+    if (!event.agentInvoked) return; // a human submitted, let it proceed normally
+
+    event.preventDefault(); // required before respondWith
+    event.respondWith(
+      (async () => {
+        const body = new FormData(event.target);
+        const res = await fetch('/support/submit', { method: 'POST', body });
+        if (!res.ok) return { error: 'upstream_error', status: res.status };
+        const { ticketId } = await res.json();
+        return { ok: true, ticketId };
+      })(),
+    );
+  });
+
+  // toolactivated and toolcancel fire on window and carry a toolName property.
+  window.addEventListener('toolactivated', (e) => {
+    console.debug('[webmcp] agent started', e.toolName);
+  });
+  window.addEventListener('toolcancel', (e) => {
+    console.debug('[webmcp] agent cancelled', e.toolName);
+  });
+</script>
