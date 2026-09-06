@@ -1,0 +1,29 @@
+{
+  "name": "claude-webmcp",
+  "version": "1.0.0",
+  "description": "Agent-readiness skill for Claude Code. Decides whether a site should expose WebMCP tools to AI agents, designs and security-reviews those tools, and adjudicates public claims against primary sources. Carries a verified API reference, a three-rung claim ladder, and a dated source ledger. Most sites should not build WebMCP tools yet; returning that answer with reasons is a successful run.",
+  "author": {
+    "name": "AgriciDaniel",
+    "url": "https://github.com/AgriciDaniel"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/AgriciDaniel/claude-webmcp",
+  "keywords": [
+    "webmcp",
+    "ai-agents",
+    "agentic-web",
+    "model-context",
+    "browser-agents",
+    "agent-readiness",
+    "tool-calling",
+    "conversion",
+    "claim-verification",
+    "evidence-grading",
+    "chrome-origin-trial",
+    "w3c",
+    "prompt-injection",
+    "tool-security",
+    "geo",
+    "ai-search"
+  ]
+}

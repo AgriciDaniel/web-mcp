@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-06T14:41:22.470877+00:00",
+  "provider": "Google Gemini Developer API",
+  "model": "gemini-3.1-flash-image",
+  "operation": "generate",
+  "aspect_ratio": "16:9",
+  "image_size": "1K",
+  "store": false,
+  "prompt_sha256": "60c58ca82078d2395a5c55c0c1eb6856df9b24b74d0d7a92dfef33e413a97b67",
+  "visual_brief_schema_version": "banana.visual-brief.v1",
+  "brief_sha256": "9073024c4d8b314b40e3efb62988fa1775384fe4c2ac8bd13c3d82da87eca9de",
+  "brief_source": "planner_minimal",
+  "references": [],
+  "artifact": {
+    "path": "assets/cover.jpg",
+    "mime_type": "image/jpeg",
+    "bytes": 338671,
+    "sha256": "f9e1cf12a62936eb3d1cc27af3bbc8f4ebfac691ce94c00034718901005b08f5",
+    "width": 1376,
+    "height": 768
+  },
+  "usage": {
+    "total_tokens": 1625
+  },
+  "grounding_used": false,
+  "provenance_notice": "Google documents SynthID on Gemini-generated images. Post-processing may alter provenance metadata.",
+  "note": "Local generation paths removed before publication. The sha256 fields are the durable provenance."
+}

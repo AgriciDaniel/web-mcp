@@ -1,0 +1,69 @@
+{
+  "skill_name": "webmcp-readiness",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Using only Case A in inputs.md and this local method, return the requested readiness assessment. Do not fetch, install, enrol, mutate or claim live results.",
+      "expected_output": "Leads with the maturity statement, not a closing caveat. Runs the four fit tests and marks the reachable-agent test no data because no consumer is named. Because that test is no data, does NOT return an unqualified build recommendation. Scopes any proposed tools to three or four on one flow. Prefers the declarative form for the existing quote form and the imperative form for the configurator and stock lookup. Sets all three annotations per tool with justification.",
+      "assertions": [
+        "States the pre-standard, origin-trial, not-shipped-by-default position before the recommendation.",
+        "Marks the reachable-agent test no data rather than assuming a consumer.",
+        "Does not return an unqualified build recommendation when a fit test is no data.",
+        "Proposes a bounded tool set, not whole-site instrumentation.",
+        "No invented adoption figure, conversion estimate, ranking effect or provider action."
+      ],
+      "files": ["inputs.md"]
+    },
+    {
+      "id": 2,
+      "prompt": "Using only Case B in inputs.md, return the fit assessment and the recommendation.",
+      "expected_output": "Returns a no or defer verdict. Names the failing tests, principally real actions and action value. Explicitly corrects the traffic-capture premise using the discovery ceiling. Does not manufacture a build recommendation to satisfy the requester's enthusiasm or the competitor comparison.",
+      "assertions": [
+        "Returns a no or defer verdict, not a scoped-down build.",
+        "Quotes or paraphrases the discovery limitation to correct the traffic premise.",
+        "Does not treat a competitor's action as evidence of fit.",
+        "Preserves the requester's stated goal while declining the requested conclusion."
+      ],
+      "files": ["inputs.md"]
+    },
+    {
+      "id": 3,
+      "prompt": "Using only Case C in inputs.md, adjudicate every claim in the draft post and return the supported wording.",
+      "expected_output": "Identifies five distinct failures: it is not a W3C Standard, agents cannot find the site through WebMCP because no discovery exists, the 89% token figure has no published methodology, no conversion data exists, and the technical-SEO framing is a stripped-hedge speculation plus a category error since WebMCP has no ranking effect. Returns corrected wording rather than a softened version of the same claims.",
+      "assertions": [
+        "Flags the W3C Standard error specifically.",
+        "Flags the discovery and traffic error specifically.",
+        "Rejects the 89% figure and does not substitute it with another unsourced number.",
+        "States no conversion data exists rather than hedging it.",
+        "Cuts or attributes unsupported claims rather than vaguely softening them."
+      ],
+      "files": ["inputs.md"]
+    },
+    {
+      "id": 4,
+      "prompt": "Using only Case D in inputs.md, review the proposed tool and return findings.",
+      "expected_output": "Finds at minimum: readOnlyHint is true on a tool that submits an order, which is wrong; consequentialHint is missing and must be true; the description 'Order' is uselessly terse and description quality is the most common failure mode; the signal is not accepted or passed to fetch; and the separate reviews tool must set untrustedContentHint and be sanitised as a prompt-injection surface.",
+      "assertions": [
+        "Identifies the readOnlyHint contradiction on a state-changing tool.",
+        "Requires consequentialHint true.",
+        "Flags the inadequate description as a substantive finding, not a nitpick.",
+        "Flags the missing signal handling.",
+        "Addresses the untrusted-content surface on the reviews tool.",
+        "Does not claim the code was executed or tested."
+      ],
+      "files": ["inputs.md"]
+    },
+    {
+      "id": 5,
+      "prompt": "Using only Case E in inputs.md, return a useful bounded response. Do not borrow facts from any other case.",
+      "expected_output": "Returns needs_input naming the specific missing inputs: the flows and business actions, the intended agent consumer, the stack and maintenance capacity, and the actual decision being made. Does not produce a fit verdict, a tool inventory or a recommendation from a screenshot.",
+      "assertions": [
+        "No facts borrowed from Cases A through D.",
+        "Names specific missing inputs and the recovery evidence required.",
+        "Returns needs_input rather than a speculative assessment.",
+        "Does not substitute absence with a generic WebMCP explainer presented as an assessment."
+      ],
+      "files": ["inputs.md"]
+    }
+  ]
+}
